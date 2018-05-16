@@ -42,6 +42,7 @@
     "ember-service-worker-cache-first": "^0.6.2",
     "ember-simple-auth": "^1.6.0",
     "ember-source": "~3.1.0",
+    "ember-web-app": "^2.3.0",
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3"
   },
