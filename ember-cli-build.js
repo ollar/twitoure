@@ -21,6 +21,7 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   app.import('node_modules/leaflet/dist/leaflet.css');
+  app.import('node_modules/normalize.css/normalize.css');
 
   return app.toTree();
 };
