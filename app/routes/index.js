@@ -7,10 +7,11 @@ export default Route.extend({
 
   activate() {
     schedule('afterRender', () => {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.get('map.leaflet')
-
-
+      navigator.geolocation.getCurrentPosition(position => {
+        this.get('map.leaflet').setView([
+          position.coords.latitude,
+          position.coords.longitude,
+        ]);
       });
     });
   },

@@ -38,6 +38,8 @@
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-resolver": "^4.0.0",
+    "ember-service-worker": "^0.6.12",
+    "ember-service-worker-cache-first": "^0.6.2",
     "ember-simple-auth": "^1.6.0",
     "ember-source": "~3.1.0",
     "eslint-plugin-ember": "^5.0.0",
