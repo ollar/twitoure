@@ -16,7 +16,6 @@ export default Service.extend({
       zoom: 16,
       minZoom: 16,
       maxZoom: 18,
-      preferCanvas: true,
       zoomControl: false,
     });
     this.set('leaflet', map);

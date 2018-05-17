@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { schedule } from '@ember/runloop';
 import { inject as service } from '@ember/service';
+import { hash } from 'rsvp';
 
 export default Route.extend({
   map: service(),
@@ -14,6 +15,14 @@ export default Route.extend({
         //   position.coords.longitude,
         // ]);
       });
+    });
+  },
+
+  model() {
+    return hash({
+      users: this.get('store').findAll('user'),
+      images: this.get('store').findAll('image'),
+      points: this.get('store').findAll('point'),
     });
   },
 });
