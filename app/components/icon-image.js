@@ -1,25 +1,9 @@
 import Component from '@ember/component';
+import GeoPattern from 'npm:geopattern';
 
 import { computed } from '@ember/object';
 
 export default Component.extend({
-  init() {
-    this._super(...arguments);
-
-    this.colours = [
-      '#b71c1c',
-      '#880e4f',
-      '#4a148c',
-      '#01579b',
-      '#006064',
-      '#827717',
-      '#f57f17',
-      '#e65100',
-      '#bf360c',
-      '#3e2723',
-    ];
-  },
-
   classNames: ['icon-image'],
   classNameBindings: ['data.image:has-image'],
 
@@ -39,23 +23,15 @@ export default Component.extend({
       .join('');
   }),
 
-  backgroundColour: computed('name', function() {
+  backgroundImage: computed('name', function() {
     if (!this.get('name')) return '';
-    var colourNumber = this.get('name')
-      .trim()
-      .split('')
-      .map(item => item.charCodeAt())
-      .reduce((sum, i) => sum + i);
-
-    var index = colourNumber % this.get('colours').length;
-
-    return this.get('colours')[index];
+    return GeoPattern.generate(this.get('name')).toDataUrl();
   }),
 
   // rewrite this
   updateStyles() {
     this.$().css({
-      backgroundColor: this.get('backgroundColour'),
+      backgroundImage: this.get('backgroundImage'),
       height: this._size,
       width: this._size,
       lineHeight: this._size + 'px',
