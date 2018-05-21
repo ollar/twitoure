@@ -10,10 +10,10 @@ export default Route.extend({
     schedule('afterRender', () => {
       this.get('map.leaflet');
       navigator.geolocation.getCurrentPosition(position => {
-        // this.get('map.leaflet').setView([
-        //   position.coords.latitude,
-        //   position.coords.longitude,
-        // ]);
+        this.get('map.leaflet').setView([
+          position.coords.latitude,
+          position.coords.longitude,
+        ]);
       });
     });
   },

@@ -8,6 +8,12 @@ export default Factory.extend({
   username() {
     return faker.internet.userName();
   },
+  firstName() {
+    return faker.name.firstName();
+  },
+  lastName() {
+    return faker.name.lastName();
+  },
   created() {
     return faker.date.past();
   },
@@ -16,8 +22,10 @@ export default Factory.extend({
   },
 
   afterCreate(user, server) {
-    const avatar = server.create('image');
-    user.avatar.add(avatar);
     server.createList('point', 100, { user });
+    const avatar = server.create('image');
+
+    user.avatar.add(avatar);
+    user.save();
   },
 });
