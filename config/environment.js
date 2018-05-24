@@ -7,6 +7,9 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    'ember-cli-mirage': {
+      enabled: false,
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -14,8 +17,8 @@ module.exports = function(environment) {
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
+        Date: false,
+      },
     },
 
     APP: {
@@ -24,9 +27,8 @@ module.exports = function(environment) {
 
       mapbox: {
         accessToken: process.env.MAPBOX_ACCESS_TOKEN,
-      }
+      },
     },
-
   };
 
   if (environment === 'development') {
