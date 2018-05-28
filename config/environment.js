@@ -29,6 +29,10 @@ module.exports = function(environment) {
         accessToken: process.env.MAPBOX_ACCESS_TOKEN,
       },
     },
+
+    i18n: {
+      defaultLocale: 'en',
+    },
   };
 
   if (environment === 'development') {

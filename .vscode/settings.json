@@ -1,0 +1,4 @@
+{
+  "prettier.singleQuote": true,
+  "prettier.disableLanguages": ["vue", "hbs", "scss", "sass", "css"]
+}
