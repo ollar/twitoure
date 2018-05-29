@@ -55,5 +55,28 @@ features:
             require-numbers: false
             require-symbols: false
             require-upper-case: false
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      pointsCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: pointsCRUD
+          requires-signin: false
+        paths:
+          /points: !com.amazonaws.mobilehub.v0.Function 
+            path:
+              name: points
+              codeFilename: uploads/points.zip
+              handler: lambda.handler
+              enableCORS: true
+              runtime: nodejs6.10
+              environment: {}
+          '/points/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            path:
+              name: points
+              codeFilename: uploads/points.zip
+              handler: lambda.handler
+              enableCORS: true
+              runtime: nodejs6.10
+              environment: {}
 name: twitoure
 region: eu-west-1
