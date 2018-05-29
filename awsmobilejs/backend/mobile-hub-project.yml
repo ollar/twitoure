@@ -2,24 +2,6 @@
 apps:
   web: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
-  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
-    components:
-      pointsCRUD: !com.amazonaws.mobilehub.v0.API 
-        attributes:
-          disable-aws-auth: true
-          name: pointsCRUD
-          requires-signin: false
-        paths:
-          /points: !com.amazonaws.mobilehub.v0.Function {}
-          '/points/{proxy+}': !com.amazonaws.mobilehub.v0.Function {}
-      sampleCloudApi: !com.amazonaws.mobilehub.v0.API 
-        attributes:
-          disable-aws-auth: false
-          name: sampleCloudApi
-          requires-signin: false
-        paths:
-          /items: !com.amazonaws.mobilehub.v0.Function {}
-          '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function {}
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
