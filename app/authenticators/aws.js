@@ -1,9 +1,18 @@
 import Base from 'ember-simple-auth/authenticators/base';
+import { inject as service } from '@ember/service';
 
 export default Base.extend({
-  restore(data) {},
+  amplify: service(),
 
-  authenticate(/*args*/) {},
+  restore() {
+    return this.get('amplify.sdk.Auth').currentSession();
+  },
 
-  invalidate(data) {},
+  authenticate({ username, password }) {
+    return this.get('amplify.sdk.Auth').signIn(username, password);
+  },
+
+  invalidate() {
+    return this.get('amplify.sdk.Auth').signOut();
+  }
 });
