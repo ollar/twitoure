@@ -1,1 +1,28 @@
+<h1>{{t 'signin.title'}}</h1>
+
+<form {{action 'signin' on='submit' }}>
+    <ul class="form-errors">
+        {{#each model.errors as |error|}}
+        <li>
+            {{error.attribute}}: {{error.message}}
+        </li>
+        {{/each}}
+    </ul>
+
+    <div class="form-line">
+        <label for="username">{{t 'signin.form.username.label'}}</label>
+        {{input name="username" id="username" value=model.username}}
+    </div>
+
+    <div class="form-line">
+        <label for="password">{{t 'signin.form.password.label'}}</label>
+        {{input type="password" name="password" id="password" value=model.password}}
+    </div>
+
+    <div class="buttons-wrapper">
+        <button type="submit">{{t 'buttons.submit'}}</button>
+    </div>
+</form>
+
+
 {{outlet}}
