@@ -18,7 +18,7 @@ const mhprefix  = process.env.MOBILE_HUB_DYNAMIC_PREFIX;
 let tableName = "points";
 const hasDynamicPrefix = true;
 
-const userIdPresent = false;
+const userIdPresent = true;
 const partitionKeyName = "userId";
 const partitionKeyType = "S"
 const sortKeyName = "timestamp";
@@ -56,7 +56,7 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
-app.get('/points/:userId', function(req, res) {
+app.get('/points', function(req, res) {
   var condition = {}
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
@@ -90,7 +90,7 @@ app.get('/points/:userId', function(req, res) {
  * HTTP Get method for get single object *
  *****************************************/
 
-app.get('/points/object/:userId/:timestamp', function(req, res) {
+app.get('/points/object/:timestamp', function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
@@ -179,7 +179,7 @@ app.post(path, function(req, res) {
 * HTTP remove method to delete object *
 ***************************************/
 
-app.delete('/points/object/:userId/:timestamp', function(req, res) {
+app.delete('/points/object/:timestamp', function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;

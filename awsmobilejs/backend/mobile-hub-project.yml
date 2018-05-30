@@ -2,6 +2,40 @@
 apps:
   web: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      pointsCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: pointsCRUD
+          requires-signin: true
+          sdk-generation-stage-name: Development
+        paths:
+          /points: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/points-20180530161616.zip
+            description: 'Handler for calls to resource path : /points/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: iuH50YZa5kiR3PvBU6x9kMrCn84QKPvetrTEDk9OZC4=
+            memorySize: '128'
+            modified: '2018-05-30T13:16:42.371+0000'
+            name: points
+            runtime: nodejs6.10
+            timeout: '3'
+            version: scgqcIEaRzKy44ADU1m9Vr7AyY2bOuJQ
+          '/points/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/points-20180530161616.zip
+            description: 'Handler for calls to resource path : /points/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: iuH50YZa5kiR3PvBU6x9kMrCn84QKPvetrTEDk9OZC4=
+            memorySize: '128'
+            modified: '2018-05-30T13:16:42.371+0000'
+            name: points
+            runtime: nodejs6.10
+            timeout: '3'
+            version: rOeR8c4WioduS1b_ZVZbDMi.Fdd8GlAW
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
@@ -14,6 +48,7 @@ features:
         tables:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
+              id: S
               latitude: N
               longitude: N
               timestamp: N
@@ -24,19 +59,20 @@ features:
               - !com.amazonaws.mobilehub.v0.NoSQLIndex 
                 hashKeyName: userId
                 hashKeyType: S
-                indexName: latitude
+                indexName: userId-latitude
                 rangeKeyName: latitude
                 rangeKeyType: N
               - !com.amazonaws.mobilehub.v0.NoSQLIndex 
                 hashKeyName: userId
                 hashKeyType: S
-                indexName: longitude
+                indexName: userId-longitude
                 rangeKeyName: longitude
                 rangeKeyType: N
             rangeKeyName: timestamp
             rangeKeyType: N
             tableName: ___DYNAMIC_PREFIX___-points
-            tablePrivacy: public
+            tablePrivacy: protected
+  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint {}
   sign-in: !com.amazonaws.mobilehub.v0.SignIn 
     attributes:
       enabled: true
@@ -45,15 +81,14 @@ features:
       sign-in-user-pools: !com.amazonaws.mobilehub.v0.UserPoolsIdentityProvider 
         attributes:
           alias-attributes:
-            - preferred_username
             - email
           mfa-configuration: OFF
           name: userpool
           password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
             min-length: '6'
-            require-lower-case: true
+            require-lower-case: false
             require-numbers: false
             require-symbols: false
             require-upper-case: false
 name: twitoure
-region: eu-west-1
+region: us-east-1

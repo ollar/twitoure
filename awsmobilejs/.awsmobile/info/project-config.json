@@ -1,6 +1,6 @@
 {
 	"SourceDir": "app",
 	"DistributionDir": "dist",
-	"BuildCommand": "ember build --environment production",
-	"StartCommand": "ember s"
+	"BuildCommand": "ember build",
+	"StartCommand": "ember serve"
 }
