@@ -48,6 +48,53 @@ features:
         tables:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
+              avatar: SS
+              fingerprint: S
+              firstName: S
+              id: S
+              lastName: S
+              points: SS
+              timestampCreated: N
+              userId: S
+              username: S
+            hashKeyName: userId
+            hashKeyType: S
+            indexes:
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: id
+                hashKeyType: S
+                indexName: id-timestampCreated
+                rangeKeyName: timestampCreated
+                rangeKeyType: N
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
+                hashKeyName: username
+                hashKeyType: S
+                indexName: username-timestampCreated
+                rangeKeyName: timestampCreated
+                rangeKeyType: N
+            rangeKeyName: timestampCreated
+            rangeKeyType: N
+            tableName: ___DYNAMIC_PREFIX___-users
+            tablePrivacy: protected
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              height: N
+              id: S
+              name: S
+              size: N
+              timestampCreated: N
+              type: S
+              url: S
+              userId: S
+              width: N
+            hashKeyName: userId
+            hashKeyType: S
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-images
+            tablePrivacy: protected
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
               id: S
               latitude: N
               longitude: N
