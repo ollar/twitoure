@@ -3,7 +3,8 @@ import { inject as service } from '@ember/service';
 import { run, schedule } from '@ember/runloop';
 
 export default Component.extend({
-    tagName: '',
+    // tagName: '',
+    classNameBindings: ['opened'],
     opened: false,
 
     router: service('-routing'),

@@ -1,4 +1,4 @@
-<aside id="drawer" class="{{if opened 'opened'}}">
+<aside class="drawer">
     <header>
         <button {{action 'toggleDrawer'}} class="drawer-toggle-button icon-button">
             {{icons/icon-close _size=24}}
@@ -6,9 +6,9 @@
 
         {{!-- {{icon-image data=me _size=48}} --}}
     </header>
-    {{!--
     <nav>
         <ul class="menu">
+            {{!--
             <li class="leaf">
                 {{link-to (t 'links.home') 'index'}}
             </li>
@@ -18,12 +18,13 @@
             <li class="leaf">
                 {{link-to (t 'navigation.orders') 'orders'}}
             </li>
+            --}}
         </ul>
-    </nav> --}}
+    </nav>
 </aside>
 
-<div id="drawer__overlay" class="{{if opened 'visible'}}" {{action 'toggleDrawer'}}></div>
+<div class="drawer__overlay" {{action 'toggleDrawer'}}></div>
 
-<main id="main-content">
+<main class="main-content">
     {{yield (hash toggleDrawer=(action 'toggleDrawer'))}}
 </main>
