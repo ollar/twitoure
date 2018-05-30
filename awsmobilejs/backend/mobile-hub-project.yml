@@ -11,31 +11,79 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /points: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/points-20180530161616.zip
-            description: 'Handler for calls to resource path : /points/{proxy+}'
-            enableCORS: true
-            environment: {}
-            handler: lambda.handler
-            hashcode: iuH50YZa5kiR3PvBU6x9kMrCn84QKPvetrTEDk9OZC4=
-            memorySize: '128'
-            modified: '2018-05-30T13:16:42.371+0000'
-            name: points
-            runtime: nodejs6.10
-            timeout: '3'
-            version: scgqcIEaRzKy44ADU1m9Vr7AyY2bOuJQ
+            path: !com.amazonaws.mobilehub.v0.Function 
+              path: !com.amazonaws.mobilehub.v0.Function 
+                codeFilename: uploads/points-20180530161616.zip
+                description: 'Handler for calls to resource path : /points/{proxy+}'
+                enableCORS: true
+                environment: {}
+                handler: lambda.handler
+                hashcode: iuH50YZa5kiR3PvBU6x9kMrCn84QKPvetrTEDk9OZC4=
+                memorySize: '128'
+                modified: '2018-05-30T13:16:42.371+0000'
+                name: points
+                runtime: nodejs6.10
+                timeout: '3'
+                version: scgqcIEaRzKy44ADU1m9Vr7AyY2bOuJQ
           '/points/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/points-20180530161616.zip
-            description: 'Handler for calls to resource path : /points/{proxy+}'
-            enableCORS: true
-            environment: {}
-            handler: lambda.handler
-            hashcode: iuH50YZa5kiR3PvBU6x9kMrCn84QKPvetrTEDk9OZC4=
-            memorySize: '128'
-            modified: '2018-05-30T13:16:42.371+0000'
-            name: points
-            runtime: nodejs6.10
-            timeout: '3'
-            version: rOeR8c4WioduS1b_ZVZbDMi.Fdd8GlAW
+            path: !com.amazonaws.mobilehub.v0.Function 
+              path: !com.amazonaws.mobilehub.v0.Function 
+                codeFilename: uploads/points-20180530161616.zip
+                description: 'Handler for calls to resource path : /points/{proxy+}'
+                enableCORS: true
+                environment: {}
+                handler: lambda.handler
+                hashcode: iuH50YZa5kiR3PvBU6x9kMrCn84QKPvetrTEDk9OZC4=
+                memorySize: '128'
+                modified: '2018-05-30T13:16:42.371+0000'
+                name: points
+                runtime: nodejs6.10
+                timeout: '3'
+                version: rOeR8c4WioduS1b_ZVZbDMi.Fdd8GlAW
+      usersCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: usersCRUD
+          requires-signin: true
+        paths:
+          /users: !com.amazonaws.mobilehub.v0.Function 
+            path: !com.amazonaws.mobilehub.v0.Function 
+              path:
+                name: users
+                codeFilename: uploads/users.zip
+                handler: lambda.handler
+                enableCORS: true
+                runtime: nodejs6.10
+                environment: {}
+          '/users/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            path: !com.amazonaws.mobilehub.v0.Function 
+              path:
+                name: users
+                codeFilename: uploads/users.zip
+                handler: lambda.handler
+                enableCORS: true
+                runtime: nodejs6.10
+                environment: {}
+      imagesCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: imagesCRUD
+          requires-signin: true
+        paths:
+          /images: !com.amazonaws.mobilehub.v0.Function 
+            path:
+              name: images
+              codeFilename: uploads/images.zip
+              handler: lambda.handler
+              enableCORS: true
+              runtime: nodejs6.10
+              environment: {}
+          '/images/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            path:
+              name: images
+              codeFilename: uploads/images.zip
+              handler: lambda.handler
+              enableCORS: true
+              runtime: nodejs6.10
+              environment: {}
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
