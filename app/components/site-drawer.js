@@ -7,7 +7,8 @@ export default Component.extend({
     classNameBindings: ['opened'],
     opened: false,
 
-    router: service('-routing'),
+    router: service(),
+    session: service(),
 
     init() {
         this._super(arguments);
@@ -24,5 +25,10 @@ export default Component.extend({
         toggleDrawer() {
             run(() => this.toggleProperty('opened'));
         },
+        signOut() {
+            this.get('session')
+            .invalidate()
+            .then(() => this.get('router').transitionTo('signin'));
+        }
     },
 });
