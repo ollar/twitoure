@@ -2,8 +2,13 @@ import DS from 'ember-data';
 import { inject as service } from '@ember/service';
 import v4 from 'npm:uuid/v4';
 
-export default DS.Adapter.extend({
+export default DS.RESTAdapter.extend({
     amplify: service(),
+
+    // shouldBackgroundReloadAll
+    // shouldBackgroundReloadRecord
+    // shouldReloadAll
+    // shouldReloadRecord
 
     _modelName(type) {
         return type.modelName;
@@ -18,12 +23,13 @@ export default DS.Adapter.extend({
     updateRecord(store, type, snapshot) {},
     deleteRecord(store, type, snapshot) {},
     findAll(store, type, sinceToken) {
-        const modelPath = this._modelName(type);
+        const modelName = this._modelName(type);
 
-        return this.get('amplify.sdk.API').get('pointsCRUD', modelPath);
+        return this.get('amplify.sdk.API').get(
+            `${this.pathForType(modelName)}CRUD`,
+            this.buildURL(modelName)
+        );
     },
-    findMany(store, type, ids, snapshots) {
-
-    },
+    findMany(store, type, ids, snapshots) {},
     query(store, type, query) {},
 });

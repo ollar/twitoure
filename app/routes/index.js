@@ -12,7 +12,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
     activate() {
         schedule('afterRender', () => {
             this.get('map.leaflet');
-            this.get('amplify.sdk.API').get('pointsCRUD', `/points`);
             navigator.geolocation.getCurrentPosition(position => {
                 this.get('map.leaflet').setView([
                     position.coords.latitude,
@@ -22,7 +21,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
         });
     },
 
-    _model() {
+    model() {
         return hash({
             users: this.get('store').findAll('user'),
             images: this.get('store').findAll('image'),
