@@ -2,6 +2,104 @@
 apps:
   web: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      imagesCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: imagesCRUD
+          requires-signin: true
+          sdk-generation-stage-name: Development
+        paths:
+          /images: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/images-20180531123305.zip
+            description: 'Handler for calls to resource path : /images/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: +i5KLueV4j4cfkXAkzm3FgCMqofS7fCHjJQIfrWurwY=
+            memorySize: '128'
+            modified: '2018-05-31T09:33:42.300+0000'
+            name: images
+            runtime: nodejs6.10
+            timeout: '3'
+            version: LjQyeKFjJCtuAV1G4B3Yg_N23oXxY4dN
+          '/images/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/images-20180531123305.zip
+            description: 'Handler for calls to resource path : /images/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: +i5KLueV4j4cfkXAkzm3FgCMqofS7fCHjJQIfrWurwY=
+            memorySize: '128'
+            modified: '2018-05-31T09:33:42.300+0000'
+            name: images
+            runtime: nodejs6.10
+            timeout: '3'
+            version: PLejTJEmng9sI_w.XL20jvLzS2n.aRH3
+      pointsCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: pointsCRUD
+          requires-signin: true
+          sdk-generation-stage-name: Development
+        paths:
+          /points: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/points-20180531123305.zip
+            description: 'Handler for calls to resource path : /points/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: XdDp9rhH4lI2Gzdf6uRzR9gtHYwqH9fUraM4IF4yy8c=
+            memorySize: '128'
+            modified: '2018-05-31T09:34:33.050+0000'
+            name: points
+            runtime: nodejs6.10
+            timeout: '3'
+            version: 5eEbW3HGw8oydkRQv_4h6ebyNe2UzJMe
+          '/points/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/points-20180531123305.zip
+            description: 'Handler for calls to resource path : /points/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: XdDp9rhH4lI2Gzdf6uRzR9gtHYwqH9fUraM4IF4yy8c=
+            memorySize: '128'
+            modified: '2018-05-31T09:34:33.050+0000'
+            name: points
+            runtime: nodejs6.10
+            timeout: '3'
+            version: bfyFxKN4k.IiGpnufaK2rxq6MPb7ZRju
+      usersCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: usersCRUD
+          requires-signin: true
+          sdk-generation-stage-name: Development
+        paths:
+          /users: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/users-20180531123305.zip
+            description: 'Handler for calls to resource path : /users/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: 7XmJkhJ7aLPbDWPo9w2aiITNL4V+AY4F1XobdLcgmbA=
+            memorySize: '128'
+            modified: '2018-05-31T09:33:42.749+0000'
+            name: users
+            runtime: nodejs6.10
+            timeout: '3'
+            version: sXRFYk764qZOlupGW_FO6SjS3PV1QbBC
+          '/users/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/users-20180531123305.zip
+            description: 'Handler for calls to resource path : /users/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: 7XmJkhJ7aLPbDWPo9w2aiITNL4V+AY4F1XobdLcgmbA=
+            memorySize: '128'
+            modified: '2018-05-31T09:33:42.749+0000'
+            name: users
+            runtime: nodejs6.10
+            timeout: '3'
+            version: RQkj7fKwF3H9pIkxV9QzO5eWkztwFVb9
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
