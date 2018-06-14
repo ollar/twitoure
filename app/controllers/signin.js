@@ -14,15 +14,17 @@ export default Controller.extend({
                         email: this.get('model.email'),
                         password: this.get('model.password'),
                     })
-                    .then(() => {
+                    .then(() =>
                         this.send('notify', {
                             type: 'success',
                             text: this.get('i18n').t('signin.success_message'),
-                        });
-                        schedule('afterRender', () =>
+                        })
+                    )
+                    .then(() =>
+                        schedule('actions', () =>
                             this.transitionToRoute('index')
-                        );
-                    })
+                        )
+                    )
                     .catch(err =>
                         this.send('notify', {
                             type: 'error',

@@ -1,8 +1,9 @@
 import Base from 'ember-simple-auth/authenticators/base';
-import firebase from 'firebase'
+import firebase from 'firebase';
+
 export default Base.extend({
   restore(data) {
-    return data;
+    return new Promise(res => res(data))
   },
 
   authenticate({ email, password }) {
