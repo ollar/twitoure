@@ -18,7 +18,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
                 ]);
 
                 var marker = this.get('map')
-                    .marker([
+                    .circleMarker([
                         position.coords.latitude,
                         position.coords.longitude,
                     ])
