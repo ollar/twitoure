@@ -10,12 +10,19 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     activate() {
         schedule('afterRender', () => {
-            this.get('map.leaflet');
+            this.get('map');
             navigator.geolocation.getCurrentPosition(position => {
                 this.get('map.leaflet').setView([
                     position.coords.latitude,
                     position.coords.longitude,
                 ]);
+
+                var marker = this.get('map')
+                    .marker([
+                        position.coords.latitude,
+                        position.coords.longitude,
+                    ])
+                    .addTo(this.get('map.leaflet'));
             });
         });
     },

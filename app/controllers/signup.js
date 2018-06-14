@@ -7,7 +7,8 @@ export default Controller.extend({
 
     actions: {
         signup() {
-            this.model.signUp()
+            this.model
+                .signUp()
                 .then(() => {
                     this.send('notify', {
                         type: 'success',
@@ -15,7 +16,7 @@ export default Controller.extend({
                     });
                 })
                 .then(() => {
-                    schedule('actions', () =>
+                    schedule('routerTransitions', () =>
                         this.transitionToRoute('index')
                     );
                 })

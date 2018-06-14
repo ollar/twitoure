@@ -4,5 +4,6 @@
     "prettier.tabWidth": 4,
     "prettier.trailingComma": "es5",
     "editor.detectIndentation": false,
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true
 }

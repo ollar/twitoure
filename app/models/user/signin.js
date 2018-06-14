@@ -9,7 +9,7 @@ export default DS.Model.extend(Validator, {
     validations: computed(() => ({
         email: {
             presence: true,
-            email: true
+            email: true,
         },
         password: {
             presence: true,

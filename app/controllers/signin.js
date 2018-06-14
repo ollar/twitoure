@@ -21,7 +21,7 @@ export default Controller.extend({
                         })
                     )
                     .then(() =>
-                        schedule('actions', () =>
+                        schedule('routerTransitions', () =>
                             this.transitionToRoute('index')
                         )
                     )
