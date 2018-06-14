@@ -6,11 +6,11 @@ export default DS.Model.extend({
 
     username: DS.attr('string'),
 
-    firstName: DS.attr('string'),
-    lastName: DS.attr('string'),
+    firstname: DS.attr('string'),
+    lastname: DS.attr('string'),
 
     avatar: DS.hasMany('image'),
-    timestampCreated: DS.attr('number'),
+    created: DS.attr('number'),
 
     points: DS.hasMany('point'),
 

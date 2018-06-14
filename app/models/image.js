@@ -8,7 +8,8 @@ export default DS.Model.extend({
     size: DS.attr('number'),
     width: DS.attr('number'),
     height: DS.attr('number'),
-    timestampCreated: DS.attr('number'),
+
+    created: DS.attr('number'),
 
     base64: computed(() => ''),
 });

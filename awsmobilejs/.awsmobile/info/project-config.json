@@ -1,6 +1,0 @@
-{
-	"SourceDir": "app",
-	"DistributionDir": "dist",
-	"BuildCommand": "ember build",
-	"StartCommand": "ember serve"
-}
