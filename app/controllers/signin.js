@@ -10,8 +10,8 @@ export default Controller.extend({
         signin() {
             if (this.get('model').validate()) {
                 this.get('session')
-                    .authenticate('authenticator:aws', {
-                        username: this.get('model.username'),
+                    .authenticate('authenticator:firebase', {
+                        email: this.get('model.email'),
                         password: this.get('model.password'),
                     })
                     .then(() => {

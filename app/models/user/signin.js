@@ -3,12 +3,13 @@ import Validator from '../../mixins/model-validator';
 import { computed } from '@ember/object';
 
 export default DS.Model.extend(Validator, {
-    username: DS.attr('string'),
+    email: DS.attr('string'),
     password: DS.attr('string'),
 
     validations: computed(() => ({
-        username: {
+        email: {
             presence: true,
+            email: true
         },
         password: {
             presence: true,

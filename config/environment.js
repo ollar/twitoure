@@ -1,15 +1,20 @@
 'use strict';
 require('dotenv').config();
 
+const { apiKey, authDomain, databaseURL, storageBucket, MAPBOX_ACCESS_TOKEN } = process.env;
+
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'twitoure',
     environment,
     rootURL: '/',
     locationType: 'auto',
-    'ember-cli-mirage': {
-      enabled: false,
-    },
+    firebase: {
+        apiKey,
+        authDomain,
+        databaseURL,
+        storageBucket,
+      },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -26,7 +31,7 @@ module.exports = function(environment) {
       // when it is created
 
       mapbox: {
-        accessToken: process.env.MAPBOX_ACCESS_TOKEN,
+        accessToken: MAPBOX_ACCESS_TOKEN,
       },
     },
 

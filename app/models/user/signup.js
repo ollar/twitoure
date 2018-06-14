@@ -8,9 +8,7 @@ export default DS.Model.extend(Validator, {
   username: DS.attr('string'),
   password: DS.attr('string'),
   email: DS.attr('string'),
-  code: DS.attr('number'),
 
-  amplify: service(),
   session: service(),
 
   validations: computed(() => ({
@@ -26,9 +24,6 @@ export default DS.Model.extend(Validator, {
     email: {
       presence: true,
       email: true
-    },
-    code: {
-      presence: true
     }
   })),
 
