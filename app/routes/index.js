@@ -12,7 +12,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     activate() {
         schedule('afterRender', () => {
-            this.get('map');
+            this.map.initMap();
             navigator.geolocation.getCurrentPosition(position => {
                 this.get('map.leaflet').setView([
                     position.coords.latitude,

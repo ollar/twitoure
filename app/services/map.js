@@ -8,11 +8,15 @@ export default Service.extend({
         return get(getOwner(this), 'application.mapbox.accessToken');
     }),
 
+    leaflet: null,
+
     init() {
         this._super(...arguments);
 
         this.setProperties(Leaf);
+    },
 
+    initMap() {
         const map = Leaf.map('main-map', {
             center: [59.915723799999995, 30.2763272],
             zoom: 16,
@@ -32,5 +36,7 @@ export default Service.extend({
                 accessToken: this.get('MAPBOX_ACCESS_TOKEN'),
             }
         ).addTo(map);
+
+        return map;
     },
 });
