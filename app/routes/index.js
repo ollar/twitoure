@@ -6,6 +6,8 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
     map: service(),
+    session: service(),
+    me: service(),
     authenticationRoute: 'signin',
 
     activate() {
@@ -29,6 +31,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     model() {
         return hash({
+            me: this.get('me').fetch(),
             users: this.get('store').findAll('user'),
             images: this.get('store').findAll('image'),
             points: this.get('store').findAll('point'),

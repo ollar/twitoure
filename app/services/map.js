@@ -24,7 +24,7 @@ export default Service.extend({
 
         Leaf.tileLayer(
             'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            //   'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}{r}.jpg80?access_token={accessToken}',
+            // 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}{r}.jpg80?access_token={accessToken}',
             {
                 maxZoom: 18,
                 id: 'mapbox.light',
