@@ -3,14 +3,14 @@ import firebase from 'firebase';
 
 export default Base.extend({
     restore(data) {
-        return new Promise(res => res(data));
+        return Promise.resolve(data);
     },
 
     authenticate({ email, password }) {
         return firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then(res => res.providerData[0]);
+            .then(res => ({ uid: res.uid }));
     },
 
     invalidate() {
