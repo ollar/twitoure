@@ -1,7 +1,8 @@
 import DS from 'ember-data';
 import { computed } from '@ember/object';
+import Validator from '../mixins/model-validator';
 
-export default DS.Model.extend({
+export default DS.Model.extend(Validator, {
     fingerprint: DS.attr('string'),
 
     username: DS.attr('string'),

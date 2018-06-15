@@ -8,7 +8,6 @@
         {{/each}}
     </ul>
 
-    {{#unless codeRequired}}
     <div class="form-line">
         <label for="username">{{t 'signup.form.username.label'}}</label>
         {{input name="username" id="username" value=model.username}}
@@ -26,17 +25,6 @@
     <div class="buttons-wrapper">
         <button type="submit">{{t 'buttons.submit'}}</button>
     </div>
-    {{else}} {{t 'signup.form.verify_message'}}
-    <div class="form-line">
-        <label for="code">{{t 'signup.form.code.label'}}</label>
-        {{input name="code" id="code" value=model.code}}
-    </div>
-    <div class="buttons-wrapper">
-        <button type="submit">{{t 'signup.form.buttons.verify'}}</button>
-    </div>
-    {{/unless}}
 </form>
 
-{{link-to (t 'navigation.signin') 'signin'}}
-
-{{outlet}}
+{{link-to (t 'navigation.signin') 'signin'}} {{outlet}}

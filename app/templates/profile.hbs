@@ -1,1 +1,40 @@
+<form {{action 'submit' on='submit' }}>
+    <ul class="form-errors">
+        {{#each model.errors as |error|}}
+        <li>
+            {{error.attribute}}: {{error.message}}
+        </li>
+        {{/each}}
+    </ul>
+
+    {{!--
+    <div class="form-line">
+        <label for="email">{{t 'signin.form.email.label'}}</label>
+        {{input name="email" type="email" id="email" value=model.email}}
+    </div> --}}
+
+    <div class="form-line">
+        <label for="username">{{t 'profile.form.username.label'}}</label>
+        {{input name="username" id="username" value=model.username}}
+    </div>
+
+    <div class="form-line">
+        <label for="firstname">{{t 'profile.form.firstname.label'}}</label>
+        {{input name="firstname" id="firstname" value=model.firstname}}
+    </div>
+
+    <div class="form-line">
+        <label for="lastname">{{t 'profile.form.lastname.label'}}</label>
+        {{input name="lastname" id="lastname" value=model.lastname}}
+    </div>
+
+    <div class="buttons-wrapper">
+        <button type="submit">{{t 'buttons.submit'}}</button>
+        <button type="button" {{action 'cancel'}}>{{t 'buttons.cancel'}}</button>
+    </div>
+</form>
+
+
+
+
 {{outlet}}

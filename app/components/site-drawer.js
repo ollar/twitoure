@@ -3,10 +3,10 @@ import { inject as service } from '@ember/service';
 import { run, schedule } from '@ember/runloop';
 
 export default Component.extend({
-    // tagName: '',
     classNameBindings: ['opened'],
     opened: false,
 
+    me: service(),
     router: service(),
     session: service(),
 
@@ -27,8 +27,8 @@ export default Component.extend({
         },
         signOut() {
             this.get('session')
-            .invalidate()
-            .then(() => this.get('router').transitionTo('signin'));
-        }
+                .invalidate()
+                .then(() => this.get('router').transitionTo('signin'));
+        },
     },
 });
