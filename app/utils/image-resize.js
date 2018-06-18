@@ -35,15 +35,34 @@ export default function imageResize(
 
             octx.drawImage(img, 0, 0, oc.width, oc.height);
 
-            return yea({
-                type: image.type,
-                name: image.name,
-                lastModified: image.lastModified,
-                lastModifiedDate: image.lastModifiedDate,
-                width: image_width,
-                height: image_height,
-                base64: oc.toDataURL(),
-            });
+            return oc.toBlob(
+                blob => {
+                    Object.defineProperties(blob, {
+                        type: {
+                            writable: true,
+                        },
+                        name: {
+                            value: image.name,
+                        },
+                        lastModified: {
+                            value: image.lastModified,
+                        },
+
+                        width: {
+                            value: image_width,
+                        },
+
+                        height: {
+                            value: image_height,
+                        },
+                    });
+
+                    return yea(blob);
+                },
+                {
+                    type: image.type,
+                }
+            );
         };
 
         img.src = imageUrl;

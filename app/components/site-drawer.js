@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { run, schedule } from '@ember/runloop';
+import { computed } from '@ember/object';
 
 export default Component.extend({
     classNameBindings: ['opened'],
@@ -9,6 +10,10 @@ export default Component.extend({
     me: service(),
     router: service(),
     session: service(),
+
+    avatarImage: computed('me.model.avatar.[]', function() {
+        return this.get('me.model.avatar').objectAt(1);
+    }),
 
     init() {
         this._super(arguments);

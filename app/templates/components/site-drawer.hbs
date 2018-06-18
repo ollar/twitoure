@@ -4,11 +4,12 @@
             {{icons/icon-close _size=24}}
         </button>
     </header>
-    {{#link-to 'profile' me.model.id}} {{icon-image data=me.model _size=48}}
+    {{#link-to 'profile' me.model.id}}
+        {{icon-image data=me.model image=avatarImage _size=128}}
 
-    <h3>
-        {{me.model.username}}
-    </h3>
+        <h3>
+            {{me.model.username}}
+        </h3>
 
     {{/link-to}}
     <nav>
