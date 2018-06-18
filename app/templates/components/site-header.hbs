@@ -1,5 +1,7 @@
-<button class="drawer-toggle-button icon-button" {{action 'toggleDrawer'}}>
-    {{icons/icon-menu _size=24}}
-</button>
+{{#if drawerData.isAuthenticated}}
+    <button class="drawer-toggle-button icon-button" {{action 'toggleDrawer'}}>
+        {{icons/icon-menu _size=24}}
+    </button>
+{{/if}}
 
 {{yield}}

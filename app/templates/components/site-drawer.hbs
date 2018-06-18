@@ -4,6 +4,7 @@
             {{icons/icon-close _size=24}}
         </button>
     </header>
+    {{#if session.isAuthenticated}}
     {{#link-to 'profile' me.model.id}}
         {{icon-image data=me.model image=avatarImage _size=128}}
 
@@ -28,10 +29,11 @@
         </ul>
         <button {{action 'signOut'}}>{{t 'buttons.signout'}}</button>
     </nav>
+    {{/if}}
 </aside>
 
 <div class="drawer__overlay" {{action 'toggleDrawer'}}></div>
 
 <main class="main-content">
-    {{yield (hash toggleDrawer=(action 'toggleDrawer'))}}
+    {{yield (hash toggleDrawer=(action 'toggleDrawer') isAuthenticated=session.isAuthenticated)}}
 </main>

@@ -12,7 +12,7 @@ export default Component.extend({
     session: service(),
 
     avatarImage: computed('me.model.avatar.[]', function() {
-        return this.get('me.model.avatar').objectAt(1);
+        return this.getWithDefault('me.model.avatar', []).objectAt(1);
     }),
 
     init() {
