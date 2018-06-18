@@ -19,5 +19,7 @@ export default Controller.extend({
         cancel() {
             this.transitionToRoute('index');
         },
+
+        uploadImage() {},
     },
 });

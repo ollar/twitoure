@@ -3,10 +3,14 @@
         <button {{action 'toggleDrawer'}} class="drawer-toggle-button icon-button">
             {{icons/icon-close _size=24}}
         </button>
-
-        {{!-- {{icon-image data=me _size=48}} --}}
     </header>
-    {{link-to (t 'links.profile') 'profile' me.model.id}}
+    {{#link-to 'profile' me.model.id}} {{icon-image data=me.model _size=48}}
+
+    <h3>
+        {{me.model.username}}
+    </h3>
+
+    {{/link-to}}
     <nav>
         <ul class="menu">
             <li class="leaf">

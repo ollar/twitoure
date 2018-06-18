@@ -1,3 +1,5 @@
+{{images-drop-area uploadImage=(action 'uploadImage')}}
+
 <form {{action 'submit' on='submit' }}>
     <ul class="form-errors">
         {{#each model.errors as |error|}}

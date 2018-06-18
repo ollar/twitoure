@@ -5,11 +5,12 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 exports.createUserModelOnSignUp = functions.auth.user().onCreate(user => {
-    var { uid, email } = user;
+    var { uid, email, displayName } = user;
     return admin
         .database()
         .ref('/users/' + uid)
         .set({
+            username: displayName,
             email,
             created: Date.now(),
         });

@@ -5,5 +5,8 @@
     "prettier.trailingComma": "es5",
     "editor.detectIndentation": false,
     "editor.tabSize": 4,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "[handlebars]": {
+        "editor.formatOnSave": false
+    }
 }
