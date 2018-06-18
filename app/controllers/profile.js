@@ -64,7 +64,13 @@ export default Controller.extend({
                         })
                     )
                 )
-                .then(() => this.model.save());
+                .then(() => this.model.save())
+                .catch(err =>
+                    this.send('notify', {
+                        type: 'error',
+                        text: err.message,
+                    })
+                );
         },
     },
 });
