@@ -39,7 +39,7 @@ export default function imageResize(
                 blob => {
                     Object.defineProperties(blob, {
                         type: {
-                            writable: true,
+                            value: image.type,
                         },
                         name: {
                             value: image.name,

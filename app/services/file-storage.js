@@ -11,8 +11,7 @@ export default Service.extend({
         return this.get('storageRef')
             .ref(path)
             .put(file)
-            .then(snapshot => snapshot.metadata)
-            .catch(() => false);
+            .then(snapshot => snapshot.metadata);
     },
 
     remove(imageModel, path) {

@@ -30,6 +30,7 @@ export default Controller.extend({
             const file = files[0];
 
             all(this.model.avatar.map(a => a.destroyRecord()))
+                .catch(() => false)
                 .then(() =>
                     all(
                         IMAGE_SIZES.map(size =>
@@ -40,7 +41,17 @@ export default Controller.extend({
                         )
                     )
                 )
-                .catch(() => false)
+                .then(images => {
+                    images.map(image =>
+                        console.log(
+                            `users/${this.model.id}/${image.width}/${
+                                image.name
+                            }`
+                        )
+                    );
+                    return images;
+                })
+
                 .then(images =>
                     all(
                         images.map(image =>
@@ -71,13 +82,13 @@ export default Controller.extend({
                         })
                     )
                 )
-                .then(() => this.model.save())
-                .catch(err =>
-                    this.send('notify', {
-                        type: 'error',
-                        text: err.message,
-                    })
-                );
+                .then(() => this.model.save());
+            // .catch(err =>
+            //     this.send('notify', {
+            //         type: 'error',
+            //         text: err.message,
+            //     })
+            // );
         },
     },
 });
