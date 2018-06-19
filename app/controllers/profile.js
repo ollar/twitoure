@@ -29,11 +29,18 @@ export default Controller.extend({
         uploadImage(files) {
             const file = files[0];
 
-            all(
-                IMAGE_SIZES.map(size =>
-                    imageResize(file, { maxWidth: size, maxHeight: size })
+            all(this.model.avatar.map(a => a.destroyRecord()))
+                .then(() =>
+                    all(
+                        IMAGE_SIZES.map(size =>
+                            imageResize(file, {
+                                maxWidth: size,
+                                maxHeight: size,
+                            })
+                        )
+                    )
                 )
-            )
+                .catch(() => false)
                 .then(images =>
                     all(
                         images.map(image =>

@@ -6,6 +6,11 @@
     ondragleave={{action 'dragLeave'}}
     ondrop={{action 'drop'}}
 >
-    <input title={{if title title (t 'messages.drop_image_here')}} type="file" id="file-input" accept="image/*" onchange={{action
-        'inputChange'}} /> {{yield}}
+    <input
+        title={{if title title (t 'messages.drop_image_here')}}
+        type="file"
+        id="file-input"
+        accept="image/*"
+        onchange={{action 'inputChange'}} />
+    {{yield}}
 </div>
