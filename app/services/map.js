@@ -53,7 +53,10 @@ export default Service.extend({
     },
 
     pointMe(e) {
-        this.marker(e.latlng, {
+        if (this.myMarker) {
+            return this.myMarker.setLatLng(e.latlng);
+        }
+        this.myMarker = this.marker(e.latlng, {
             icon: this.myIcon,
         }).addTo(this.get('leaflet'));
     },

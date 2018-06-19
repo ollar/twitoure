@@ -21,6 +21,12 @@ export default Route.extend(AuthenticatedRouteMixin, {
         });
     },
 
+    deactivate() {
+        schedule('routerTransitions', () =>
+            this.get('map.leaflet').stopLocate()
+        );
+    },
+
     model() {
         return hash({
             me: this.get('me').fetch(),
