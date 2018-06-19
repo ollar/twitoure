@@ -2,18 +2,28 @@ import Service from '@ember/service';
 import Leaf from 'npm:leaflet';
 import { computed, get } from '@ember/object';
 import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 
 export default Service.extend({
+    me: service(),
     MAPBOX_ACCESS_TOKEN: computed(function() {
         return get(getOwner(this), 'application.mapbox.accessToken');
     }),
 
     leaflet: null,
 
+    myIcon: computed('me.model.avatar.[]', function() {
+        return this.icon({
+            iconUrl: this.get('me.model.avatar.firstObject.url'),
+            iconSize: [48, 48],
+        });
+    }),
+
     init() {
         this._super(...arguments);
 
         this.setProperties(Leaf);
+        this.pointMe = this.pointMe.bind(this);
     },
 
     initMap() {
@@ -23,7 +33,7 @@ export default Service.extend({
             minZoom: 16,
             maxZoom: 18,
             zoomControl: false,
-        });
+        }).fitWorld();
         this.set('leaflet', map);
 
         Leaf.tileLayer(
@@ -37,6 +47,14 @@ export default Service.extend({
             }
         ).addTo(map);
 
+        map.on('locationfound', this.pointMe);
+
         return map;
+    },
+
+    pointMe(e) {
+        this.marker(e.latlng, {
+            icon: this.myIcon,
+        }).addTo(this.get('leaflet'));
     },
 });

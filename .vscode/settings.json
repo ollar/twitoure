@@ -8,5 +8,8 @@
     "editor.formatOnSave": true,
     "[handlebars]": {
         "editor.formatOnSave": false
+    },
+    "[html]": {
+        "editor.formatOnSave": false
     }
 }
