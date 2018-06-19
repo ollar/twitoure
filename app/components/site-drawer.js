@@ -20,6 +20,7 @@ export default Component.extend({
 
         const router = this.get('router');
         router.addObserver('currentRouteName', this, 'closeDrawer');
+        this.me.fetch();
     },
 
     closeDrawer() {

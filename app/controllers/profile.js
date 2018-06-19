@@ -16,7 +16,9 @@ export default Controller.extend({
                 this.model.save().then(() =>
                     this.send('notify', {
                         type: 'success',
-                        text: this.get('i18n').t('profile.success_message'),
+                        text: this.get('i18n').t(
+                            'profile.save.success_message'
+                        ),
                     })
                 );
             }
@@ -41,17 +43,6 @@ export default Controller.extend({
                         )
                     )
                 )
-                .then(images => {
-                    images.map(image =>
-                        console.log(
-                            `users/${this.model.id}/${image.width}/${
-                                image.name
-                            }`
-                        )
-                    );
-                    return images;
-                })
-
                 .then(images =>
                     all(
                         images.map(image =>
@@ -82,13 +73,13 @@ export default Controller.extend({
                         })
                     )
                 )
-                .then(() => this.model.save());
-            // .catch(err =>
-            //     this.send('notify', {
-            //         type: 'error',
-            //         text: err.message,
-            //     })
-            // );
+                .then(() => this.model.save())
+                .catch(err =>
+                    this.send('notify', {
+                        type: 'error',
+                        text: err.message,
+                    })
+                );
         },
     },
 });

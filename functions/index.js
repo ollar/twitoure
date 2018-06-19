@@ -4,6 +4,8 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
+const storageBucket = 'twitoure-f968b.appspot.com';
+
 exports.createUserModelOnSignUp = functions.auth.user().onCreate(user => {
     var { uid, email, displayName } = user;
     return admin
@@ -23,3 +25,18 @@ exports.removeUserModelOnDelete = functions.auth.user().onDelete(user => {
         .ref('/users/' + uid)
         .remove();
 });
+
+exports.removeImageFileOnModelDestroy = functions.database
+    .ref('/images/{imageId}')
+    .onDelete(snapshot => {
+        const value = snapshot.val();
+
+        if (value) {
+            return admin
+                .storage()
+                .bucket(storageBucket)
+                .file(value.fullPath)
+                .delete();
+        }
+        return false;
+    });

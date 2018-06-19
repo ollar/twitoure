@@ -1,7 +1,7 @@
 <aside class="drawer">
     <header>
         <button {{action 'toggleDrawer'}} class="drawer-toggle-button icon-button">
-            {{icons/icon-close _size=24}}
+            {{svg-icon _size=24 _name="x"}}
         </button>
     </header>
     {{#if session.isAuthenticated}}

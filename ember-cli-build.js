@@ -31,8 +31,10 @@ module.exports = function(defaults) {
     // please specify an object with the list of modules as keys
     // along with the exports of each module as its value.
 
-    app.import('node_modules/leaflet/dist/leaflet.css');
     app.import('node_modules/normalize.css/normalize.css');
+    app.import('node_modules/leaflet/dist/leaflet.css');
+
+    app.import('node_modules/feather-icons/dist/feather-sprite.svg');
 
     return app.toTree();
 };
