@@ -14,17 +14,23 @@ export default Route.extend(AuthenticatedRouteMixin, {
         schedule('afterRender', () => {
             this.map.initMap();
 
-            this.get('map.leaflet').locate({
-                setView: true,
-                watch: true,
+            this.get('map.leaflet').on('locationfound', e => {
+                const point = this.store.createRecord('point', {
+                    latitude: e.latitude,
+                    longitude: e.longitude,
+                    created: Date.now(),
+                    user: this.get('me.model'),
+                });
+                point.save();
             });
         });
     },
 
     deactivate() {
-        schedule('routerTransitions', () =>
-            this.get('map.leaflet').stopLocate()
-        );
+        schedule('routerTransitions', () => {
+            this.get('map.leaflet').stopLocate();
+            this.get('map.leaflet').remove();
+        });
     },
 
     model() {
