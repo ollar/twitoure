@@ -25,6 +25,7 @@ export default Service.extend({
 
         this.setProperties(Leaf);
         this.pointMe = this.pointMe.bind(this);
+        this.onLocationFound = this.onLocationFound.bind(this);
         this.onLocationError = this.onLocationError.bind(this);
     },
 
@@ -38,8 +39,9 @@ export default Service.extend({
             zoomControl: false,
         });
         this.set('leaflet', map);
+        map.on('locationfound', this.onLocationFound);
         map.on('locationfound', this.pointMe);
-        // map.on('locationerror', this.onLocationError);
+        map.on('locationerror', this.onLocationError);
 
         Leaf.tileLayer(
             'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -69,7 +71,7 @@ export default Service.extend({
 
     pointMe(e) {
         if (this.initialize) {
-            this.get('leaflet').setView(e.latlng);
+            this.get('leaflet').flyTo(e.latlng);
             this.set('initialize', false);
         }
         if (this.myMarker) {
@@ -78,6 +80,10 @@ export default Service.extend({
         this.myMarker = this.marker(e.latlng, {
             icon: this.myIcon,
         }).addTo(this.get('leaflet'));
+    },
+
+    onLocationFound(e) {
+        this.set('myLocation', e.latlng);
     },
 
     onLocationError(err) {
