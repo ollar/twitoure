@@ -16,7 +16,7 @@ export default Service.extend({
 
     myIcon: computed('me.model.avatar.[]', function() {
         return this.icon({
-            iconUrl: this.get('me.model.avatar.firstObject.url'),
+            iconUrl: this.get('me.model.avatar.128.url'),
             iconSize: [48, 48],
         });
     }),
@@ -79,12 +79,12 @@ export default Service.extend({
             this.get('leaflet').setView(e.latlng);
             this.set('initialize', false);
         }
-        // if (this.myMarker) {
-        //     return this.myMarker.setLatLng(e.latlng);
-        // }
-        // this.myMarker = this.marker(e.latlng, {
-        //     icon: this.myIcon,
-        // }).addTo(this.get('leaflet'));
+        if (this.myMarker) {
+            return this.myMarker.setLatLng(e.latlng);
+        }
+        this.myMarker = this.marker(e.latlng, {
+            icon: this.myIcon,
+        }).addTo(this.get('leaflet'));
     },
 
     onLocationFound(e) {
