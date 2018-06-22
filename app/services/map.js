@@ -12,6 +12,7 @@ export default Service.extend({
     }),
 
     leaflet: null,
+    myLatLng: computed(() => ({})),
 
     myIcon: computed('me.model.avatar.[]', function() {
         return this.icon({
@@ -64,6 +65,10 @@ export default Service.extend({
     },
 
     locateMe() {
+        if (Object.keys(this.myLatLng).length) {
+            this.get('leaflet').flyTo(this.myLatLng);
+        }
+        this.get('leaflet');
         return this.get('leaflet').locate({
             setView: true,
         });
@@ -71,23 +76,23 @@ export default Service.extend({
 
     pointMe(e) {
         if (this.initialize) {
-            this.get('leaflet').flyTo(e.latlng);
+            this.get('leaflet').setView(e.latlng);
             this.set('initialize', false);
         }
-        if (this.myMarker) {
-            return this.myMarker.setLatLng(e.latlng);
-        }
-        this.myMarker = this.marker(e.latlng, {
-            icon: this.myIcon,
-        }).addTo(this.get('leaflet'));
+        // if (this.myMarker) {
+        //     return this.myMarker.setLatLng(e.latlng);
+        // }
+        // this.myMarker = this.marker(e.latlng, {
+        //     icon: this.myIcon,
+        // }).addTo(this.get('leaflet'));
     },
 
     onLocationFound(e) {
-        this.set('myLocation', e.latlng);
+        this.set('myLatLng', e.latlng);
     },
 
     onLocationError(err) {
-        return this.send('notify', {
+        return getOwner(this).router.send('notify', {
             type: 'error',
             text: err.message,
         });

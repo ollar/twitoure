@@ -10,7 +10,8 @@ export default DS.Model.extend(Validator, {
     lastname: DS.attr('string'),
     email: DS.attr('string'),
 
-    avatar: DS.hasMany('image'),
+    // avatar: DS.hasMany('image'),
+    avatar: DS.belongsTo('user/avatar'),
     created: DS.attr('number'),
 
     points: DS.hasMany('point'),
