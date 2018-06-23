@@ -68,10 +68,6 @@ export default Service.extend({
         if (Object.keys(this.myLatLng).length) {
             this.get('leaflet').flyTo(this.myLatLng);
         }
-        this.get('leaflet');
-        return this.get('leaflet').locate({
-            setView: true,
-        });
     },
 
     pointMe(e) {
