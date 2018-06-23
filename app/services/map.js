@@ -14,7 +14,7 @@ export default Service.extend({
     leaflet: null,
     myLatLng: computed(() => ({})),
 
-    myIcon: computed('me.model.avatar.[]', function() {
+    myIcon: computed('me.model.avatar.128.url', function() {
         return this.icon({
             iconUrl: this.get('me.model.avatar.128.url'),
             iconSize: [48, 48],
@@ -32,6 +32,7 @@ export default Service.extend({
 
     initMap() {
         this.set('initialize', true);
+        this.myMarker = null;
         const map = Leaf.map('main-map', {
             center: [0, 0],
             zoom: 1,
