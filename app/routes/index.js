@@ -50,14 +50,14 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
         schedule('afterRender', () => {
             schedule('afterRender', () => {
-                controller.points.forEach(point => {
-                    run(() =>
-                        this.get('map').setPoint([
-                            point.latitude,
-                            point.longitude,
-                        ])
-                    );
-                });
+                // controller.points.forEach(point => {
+                //     run(() =>
+                //         this.get('map').setPoint([
+                //             point.latitude,
+                //             point.longitude,
+                //         ])
+                //     );
+                // });
             });
         });
     },

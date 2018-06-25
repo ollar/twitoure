@@ -5,23 +5,33 @@ import { schedule } from '@ember/runloop';
 
 export default Controller.extend({
     map: service(),
+    points: computed(() => []),
 
-    // points: computed('map.{myLatLng,mapCenter}', function() {
-    // points: computed('map.myLatLng', function() {
-    points: computed('map.mapCenter.[]', function() {
-        console.log('1111 asdasdasdasdasdasdasdasdasdasdas');
-        return [];
-        // if (!Object.keys(this.map.mapCenter).length) return [];
-        // // if (!this.map.mapCenter) return [];
-        // return this.get('model.points').filter(p => {
-        //     console.log(
-        //         this.get('map.leaflet').distance(this.map.mapCenter, [
-        //             p.latitude,
-        //             p.longitude,
-        //         ])
-        //     );
-        // });
-    }),
+    init() {
+        this._super(...arguments);
+
+        this.addObserver('map.mapCenter', this, 'mapCenterChanged');
+    },
+
+    mapCenterChanged() {
+        this.set(
+            'points',
+            this.get('model.points').filter(p => {
+                return (
+                    this.get('map.leaflet').distance(this.map.mapCenter, [
+                        p.latitude,
+                        p.longitude,
+                    ]) < 100
+                );
+            })
+        );
+
+        schedule('afterRender', () =>
+            this.points.forEach(point => {
+                this.get('map').setPoint([point.latitude, point.longitude]);
+            })
+        );
+    },
 
     actions: {
         locateMe() {

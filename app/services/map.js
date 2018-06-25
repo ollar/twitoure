@@ -92,7 +92,7 @@ export default Service.extend({
     },
 
     onLocationFound(e) {
-        this.set('myLatLng', e.latlng);
+        return this.set('myLatLng', e.latlng);
     },
 
     onLocationError(err) {
@@ -103,12 +103,6 @@ export default Service.extend({
     },
 
     onMoveEnd() {
-        console.log('asasasas');
-        const { lat, lng } = this.get('leaflet').getCenter();
-        // this.set('mapCenter', { lat, lng });
-        this.set('mapCenter', []);
-        this.set('mapCenter', [lat, lng]);
-
-        console.log(this.mapCenter);
+        return this.set('mapCenter', this.get('leaflet').getCenter());
     },
 });
