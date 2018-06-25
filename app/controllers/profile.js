@@ -56,8 +56,17 @@ export default Controller.extend({
         uploadImage(files) {
             const file = files[0];
 
-            // all(this.model.avatar.map(a => a.destroyRecord()))
-            resolve()
+            this.model
+                .get('avatar')
+                .then(avatar => {
+                    if (!avatar) resolve();
+                    avatar.eachRelationship(imageKey =>
+                        avatar
+                            .get(imageKey)
+                            .then(image => image.destroyRecord())
+                    );
+                    return avatar.destroyRecord();
+                })
                 .catch(() => true)
                 .then(() =>
                     hash(
