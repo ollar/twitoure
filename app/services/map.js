@@ -13,6 +13,7 @@ export default Service.extend({
 
     leaflet: null,
     myLatLng: computed(() => ({})),
+    mapCenter: computed(() => []),
 
     myIcon: computed('me.model.avatar.128.url', function() {
         return this.icon({
@@ -28,6 +29,7 @@ export default Service.extend({
         this.pointMe = this.pointMe.bind(this);
         this.onLocationFound = this.onLocationFound.bind(this);
         this.onLocationError = this.onLocationError.bind(this);
+        this.onMoveEnd = this.onMoveEnd.bind(this);
     },
 
     initMap() {
@@ -44,6 +46,7 @@ export default Service.extend({
         map.on('locationfound', this.onLocationFound);
         map.on('locationfound', this.pointMe);
         map.on('locationerror', this.onLocationError);
+        map.on('moveend', this.onMoveEnd);
 
         Leaf.tileLayer(
             'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -84,6 +87,10 @@ export default Service.extend({
         }).addTo(this.get('leaflet'));
     },
 
+    setPoint(latlng) {
+        return this.circle(latlng, {}).addTo(this.get('leaflet'));
+    },
+
     onLocationFound(e) {
         this.set('myLatLng', e.latlng);
     },
@@ -93,5 +100,15 @@ export default Service.extend({
             type: 'error',
             text: err.message,
         });
+    },
+
+    onMoveEnd() {
+        console.log('asasasas');
+        const { lat, lng } = this.get('leaflet').getCenter();
+        // this.set('mapCenter', { lat, lng });
+        this.set('mapCenter', []);
+        this.set('mapCenter', [lat, lng]);
+
+        console.log(this.mapCenter);
     },
 });
