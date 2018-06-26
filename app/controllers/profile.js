@@ -56,6 +56,13 @@ export default Controller.extend({
         uploadImage(files) {
             const file = files[0];
 
+            imageResize(file, {
+                maxWidth: 128,
+                maxHeight: 128,
+            });
+
+            return;
+
             this.model
                 .get('avatar')
                 .then(avatar => {
