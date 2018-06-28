@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import Leaf from 'npm:leaflet';
+import Leaf from 'leaflet';
 import { computed, get } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { inject as service } from '@ember/service';

@@ -9,7 +9,10 @@ module.exports = function(defaults) {
         // Add options here
         'esw-cache-first': {
             // RegExp patterns specifying which URLs to cache.
-            patterns: ['https://api.tiles.mapbox.com/(.+)'],
+            patterns: [
+                'https://api.tiles.mapbox.com/(.+)',
+                // 'https://.*tile.openstreetmap.org/(.+)',
+            ],
 
             // changing this version number will bust the cache
             version: '1',
@@ -42,9 +45,15 @@ module.exports = function(defaults) {
     // please specify an object with the list of modules as keys
     // along with the exports of each module as its value.
 
-    app.import('node_modules/normalize.css/normalize.css');
+    app.import('node_modules/leaflet/dist/leaflet.js');
     app.import('node_modules/leaflet/dist/leaflet.css');
 
+    app.import('node_modules/fingerprintjs2/dist/fingerprint2.min.js');
+
+    app.import('vendor/shims/leaflet.js');
+    app.import('vendor/shims/fingerprintjs2.js');
+
+    app.import('node_modules/normalize.css/normalize.css');
     app.import('node_modules/feather-icons/dist/feather-sprite.svg');
 
     return app.toTree();

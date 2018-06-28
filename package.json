@@ -20,7 +20,6 @@
         "broccoli-asset-rev": "^2.4.5",
         "dotenv": "^5.0.1",
         "ember-ajax": "^3.0.0",
-        "ember-browserify": "^1.2.2",
         "ember-cli": "^3.1.4",
         "ember-cli-app-version": "^3.0.0",
         "ember-cli-babel": "^6.6.0",
