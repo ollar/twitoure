@@ -5,6 +5,7 @@ import Component from 'site-drawer-component/components/site-drawer-aside';
 export default Component.extend({
     session: service(),
     me: service(),
+    router: service(),
 
     actions: {
         signOut() {
