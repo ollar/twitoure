@@ -1,6 +1,8 @@
 'use strict';
-
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const environment = EmberApp.env();
+const IS_PROD = environment === 'production';
+const IS_TEST = environment === 'test';
 
 module.exports = function(defaults) {
     let app = new EmberApp(defaults, {
@@ -15,6 +17,15 @@ module.exports = function(defaults) {
         'ember-service-worker': {
             enabled: false,
             versionStrategy: 'every-build',
+        },
+
+        hinting: IS_TEST,
+        tests: IS_TEST,
+        'ember-cli-babel': {
+            includePolyfill: IS_PROD,
+        },
+        autoprefixer: {
+            sourcemap: false, // Was never helpful
         },
     });
 
