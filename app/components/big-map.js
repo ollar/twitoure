@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
-import { schedule } from '@ember/runloop';
+import { schedule, run } from '@ember/runloop';
 
 export default Component.extend({
     elementId: 'main-map',
@@ -38,6 +38,17 @@ export default Component.extend({
     didInsertElement() {
         schedule('afterRender', () => {
             this.map.initMap();
+
+            schedule('afterRender', () => {
+                this._points.forEach(point => {
+                    run(() =>
+                        this.get('map').setPoint([
+                            point.latitude,
+                            point.longitude,
+                        ])
+                    );
+                });
+            });
         });
     },
 
