@@ -1,0 +1,32 @@
+<header>
+    <button {{action 'toggleDrawer'}} class="drawer-toggle-button icon-button">
+        {{svg-icon _size=24 _name="x"}}
+    </button>
+</header>
+{{#if session.isAuthenticated}}
+{{#link-to 'profile' me.model.id}}
+    {{avatar-icon data=me.model image=(get me.model.avatar '256') _size=256}}
+
+    <h3>
+        {{me.model.username}}
+    </h3>
+
+{{/link-to}}
+<nav>
+    <ul class="menu">
+        <li class="leaf">
+            {{link-to (t 'links.home') 'index'}}
+        </li>
+        {{!--
+        <li class="leaf">
+            {{link-to (t 'navigation.create_product') 'create-product'}}
+        </li>
+        <li class="leaf">
+            {{link-to (t 'navigation.orders') 'orders'}}
+        </li>
+        --}}
+    </ul>
+    <button {{action 'signOut'}}>{{t 'buttons.signout'}}</button>
+</nav>
+{{/if}}
+{{yield}}
