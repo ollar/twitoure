@@ -15,12 +15,9 @@ export default Service.extend({
     myLatLng: computed(() => ({})),
     mapCenter: computed(() => []),
 
-    myIcon: computed('me.model.avatar.128.url', function() {
+    myIcon: computed('me.model.avatar', function() {
         return this.icon({
-            iconUrl: this.getWithDefault(
-                'me.model.avatar.128.url',
-                'image.jpg'
-            ),
+            iconUrl: this.getWithDefault('me.model.avatar.64.url', 'image.jpg'),
             iconSize: [48, 48],
         });
     }),

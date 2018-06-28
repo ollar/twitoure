@@ -4,7 +4,7 @@ import { hash, resolve } from 'rsvp';
 
 import imageResize from '../utils/image-resize';
 
-const IMAGE_SIZES = [128, 256, 512];
+const IMAGE_SIZES = [32, 64, 128, 256, 512];
 
 export default Controller.extend({
     i18n: service(),
