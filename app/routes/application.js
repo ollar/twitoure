@@ -4,6 +4,8 @@ import { computed } from '@ember/object';
 
 export default Route.extend({
     notify: service(),
+    me: service(),
+
     notificationTypes: computed(() => [
         'info',
         'success',
@@ -11,6 +13,10 @@ export default Route.extend({
         'alert',
         'error',
     ]),
+
+    model() {
+        return this.me.fetch();
+    },
 
     actions: {
         error(e) {
