@@ -7,6 +7,11 @@ export default Component.extend({
     me: service(),
     router: service(),
 
+    didInsertElement() {
+        this._super(...arguments);
+        this.me.fetch();
+    },
+
     actions: {
         signOut() {
             this.get('session')

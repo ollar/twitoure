@@ -17,8 +17,12 @@ export default Service.extend({
 
     myIcon: computed('me.model.avatar', function() {
         return this.icon({
-            iconUrl: this.getWithDefault('me.model.avatar.64.url', 'image.jpg'),
-            iconSize: [48, 48],
+            iconUrl: this.getWithDefault('me.model.avatar.32.url', 'image.jpg'),
+            iconRetinaUrl: this.getWithDefault(
+                'me.model.avatar.64.url',
+                'image.jpg'
+            ),
+            iconSize: [32, 32],
         });
     }),
 

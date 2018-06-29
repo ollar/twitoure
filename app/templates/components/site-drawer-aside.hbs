@@ -5,7 +5,7 @@
 </header>
 {{#if session.isAuthenticated}}
 {{#link-to 'profile' me.model.id}}
-    {{avatar-icon data=me.model image=(get me.model.avatar '256') _size=256}}
+    {{avatar-icon data=me.model image=(get me.model.avatar '128') _size=128}}
 
     <h3>
         {{me.model.username}}
