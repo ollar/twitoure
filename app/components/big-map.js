@@ -69,23 +69,6 @@ export default Component.extend({
     //     // point.save();
     // });
 
-    // afterModel() {
-    //     const controller = this.controllerFor(this.routeName);
-
-    //     schedule('afterRender', () => {
-    //         schedule('afterRender', () => {
-    //             // controller.points.forEach(point => {
-    //             //     run(() =>
-    //             //         this.get('map').setPoint([
-    //             //             point.latitude,
-    //             //             point.longitude,
-    //             //         ])
-    //             //     );
-    //             // });
-    //         });
-    //     });
-    // },
-
     actions: {
         locateMe() {
             return this.map.locateMe();
