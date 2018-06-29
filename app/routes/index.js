@@ -10,7 +10,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     model() {
         return hash({
             me: this.get('me').fetch(),
-            users: this.get('store').findAll('user'),
+            // users: this.get('store').findAll('user'),
             images: this.get('store').findAll('image'),
             points: this.get('store').query('point', {
                 orderBy: 'created',
